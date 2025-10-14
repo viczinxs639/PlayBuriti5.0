@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Buriti - Plataforma de Jogos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <!-- Main Menu Screen -->
+    <div id="menuScreen" class="screen active">
+        <div class="container">
+            <header class="header">
+                <div class="logo">
+                    <h1>Play <span class="highlight">Buriti</span></h1>
+                </div>
+                <nav class="nav">
+                    <a href="#" class="nav-link">Início</a>
+                    <a href="#" class="nav-link">Ranking</a>
+                    <a href="#" class="nav-link">Sobre</a>
+                </nav>
+            </header>
+
+            <main class="main-content">
+                <section class="hero">
+                    <h2 class="hero-title">Bem-vindo ao Play Buriti</h2>
+                    <p class="hero-subtitle">Criado por Victor Gabriel</p>
+                    <p class="hero-description">Sua plataforma de mini games brasileiros</p>
+                </section>
+
+                <section class="games-grid">
+                    <div class="game-card" data-game="snake">
+                        <div class="game-icon">🐍</div>
+                        <h3 class="game-title">Snake</h3>
+                        <p class="game-description">Clássico jogo da cobrinha</p>
+                        <button class="play-button">Jogar</button>
+                    </div>
+
+                    <div class="game-card" data-game="tetris">
+                        <div class="game-icon">🎮</div>
+                        <h3 class="game-title">Tetris</h3>
+                        <p class="game-description">Encaixe os blocos</p>
+                        <button class="play-button">Jogar</button>
+                    </div>
+
+                    <div class="game-card" data-game="pong">
+                        <div class="game-icon">🏓</div>
+                        <h3 class="game-title">Pong</h3>
+                        <p class="game-description">Pong com IA</p>
+                        <button class="play-button">Jogar</button>
+                    </div>
+
+                    <div class="game-card" data-game="memory">
+                        <div class="game-icon">🍎</div>
+                        <h3 class="game-title">Memória</h3>
+                        <p class="game-description">Jogo da memória de frutas</p>
+                        <button class="play-button">Jogar</button>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="footer">
+                <p>Criado com dedicação por Victor Gabriel</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Snake Game Screen -->
+    <div id="snakeScreen" class="screen">
+        <div class="game-container">
+            <header class="game-header">
+                <button class="back-button" onclick="showScreen('menu')">← Voltar</button>
+                <h1 class="game-title">Snake</h1>
+                <div class="score-display">
+                    <span class="score-label">Pontos:</span>
+                    <span class="score-value" id="snakeScore">0</span>
+                </div>
+            </header>
+
+            <div class="game-wrapper">
+                <div class="game-info">
+                    <div class="info-card">
+                        <h3>Recorde</h3>
+                        <p class="high-score" id="snakeHighScore">0</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Controles</h3>
+                        <p class="controls-text">
+                            <span>↑ ↓ ← → ou WASD</span>
+                            <span class="mobile-hint">Toque na tela (mobile)</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="canvas-container">
+                    <canvas id="snakeCanvas"></canvas>
+                    <div class="game-overlay" id="snakeOverlay">
+                        <div class="overlay-content">
+                            <h2 id="snakeOverlayTitle">Snake</h2>
+                            <p id="snakeOverlayMessage">Pressione ESPAÇO para começar</p>
+                            <button class="start-button" id="snakeStartButton">Iniciar Jogo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tetris Game Screen -->
+    <div id="tetrisScreen" class="screen">
+        <div class="game-container">
+            <header class="game-header">
+                <button class="back-button" onclick="showScreen('menu')">← Voltar</button>
+                <h1 class="game-title">Tetris</h1>
+                <div class="score-display">
+                    <span class="score-label">Pontos:</span>
+                    <span class="score-value" id="tetrisScore">0</span>
+                </div>
+            </header>
+
+            <div class="game-wrapper">
+                <div class="game-info">
+                    <div class="info-card">
+                        <h3>Nível</h3>
+                        <p class="level-display" id="tetrisLevel">1</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Linhas</h3>
+                        <p class="lines-display" id="tetrisLines">0</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Próxima Peça</h3>
+                        <canvas id="tetrisNextCanvas"></canvas>
+                    </div>
+                    <div class="info-card">
+                        <h3>Controles</h3>
+                        <p class="controls-text">
+                            <span>← → Mover</span>
+                            <span>↑ Girar</span>
+                            <span>↓ Descer</span>
+                            <span>ESPAÇO Drop</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="canvas-container">
+                    <canvas id="tetrisCanvas"></canvas>
+                    <div class="game-overlay" id="tetrisOverlay">
+                        <div class="overlay-content">
+                            <h2 id="tetrisOverlayTitle">Tetris</h2>
+                            <p id="tetrisOverlayMessage">Pressione ESPAÇO para começar</p>
+                            <button class="start-button" id="tetrisStartButton">Iniciar Jogo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pong Game Screen -->
+    <div id="pongScreen" class="screen">
+        <div class="game-container">
+            <header class="game-header">
+                <button class="back-button" onclick="showScreen('menu')">← Voltar</button>
+                <h1 class="game-title">Pong</h1>
+                <div class="score-display">
+                    <span class="score-label">Você:</span>
+                    <span class="score-value" id="pongPlayerScore">0</span>
+                    <span class="score-separator">-</span>
+                    <span class="score-value" id="pongAiScore">0</span>
+                    <span class="score-label">IA</span>
+                </div>
+            </header>
+
+            <div class="game-wrapper">
+                <div class="game-info">
+                    <div class="info-card">
+                        <h3>Dificuldade</h3>
+                        <div class="difficulty-buttons">
+                            <button class="difficulty-btn active" data-difficulty="easy">Fácil</button>
+                            <button class="difficulty-btn" data-difficulty="medium">Médio</button>
+                            <button class="difficulty-btn" data-difficulty="hard">Difícil</button>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3>Controles</h3>
+                        <p class="controls-text">
+                            <span>↑ ↓ ou W S</span>
+                            <span>Mouse (PC)</span>
+                            <span class="mobile-hint">Toque e arraste (mobile)</span>
+                        </p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Primeiro a 5 vence!</h3>
+                        <p class="game-status" id="pongGameStatus">Pronto para jogar</p>
+                    </div>
+                </div>
+
+                <div class="canvas-container">
+                    <canvas id="pongCanvas"></canvas>
+                    <div class="game-overlay" id="pongOverlay">
+                        <div class="overlay-content">
+                            <h2 id="pongOverlayTitle">Pong</h2>
+                            <p id="pongOverlayMessage">Pressione ESPAÇO para começar</p>
+                            <button class="start-button" id="pongStartButton">Iniciar Jogo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Memory Game Screen -->
+    <div id="memoryScreen" class="screen">
+        <div class="game-container">
+            <header class="game-header">
+                <button class="back-button" onclick="showScreen('menu')">← Voltar</button>
+                <h1 class="game-title">Jogo da Memória</h1>
+                <div class="score-display">
+                    <span class="score-label">Movimentos:</span>
+                    <span class="score-value" id="memoryMoves">0</span>
+                </div>
+            </header>
+
+            <div class="game-wrapper">
+                <div class="game-info">
+                    <div class="info-card">
+                        <h3>Tempo</h3>
+                        <p class="time-display" id="memoryTime">00:00</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Pares Encontrados</h3>
+                        <p class="pairs-display">
+                            <span id="memoryPairsFound">0</span> / <span id="memoryTotalPairs">8</span>
+                        </p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Melhor Tempo</h3>
+                        <p class="best-time" id="memoryBestTime">--:--</p>
+                    </div>
+                    <div class="info-card">
+                        <button class="reset-button" id="memoryResetButton">Reiniciar</button>
+                    </div>
+                </div>
+
+                <div class="game-board-container">
+                    <div class="game-board" id="memoryGameBoard"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="victory-modal" id="memoryVictoryModal">
+            <div class="modal-content">
+                <h2>Parabéns!</h2>
+                <p class="victory-message">Você completou o jogo!</p>
+                <div class="victory-stats">
+                    <div class="stat">
+                        <span class="stat-label">Tempo:</span>
+                        <span class="stat-value" id="memoryFinalTime">00:00</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Movimentos:</span>
+                        <span class="stat-value" id="memoryFinalMoves">0</span>
+                    </div>
+                </div>
+                <button class="play-again-button" id="memoryPlayAgainButton">Jogar Novamente</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
